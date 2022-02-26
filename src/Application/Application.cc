@@ -54,8 +54,6 @@ LRESULT CALLBACK Application::wnd_proc(HWND hwnd, UINT msg, WPARAM wp, LPARAM lp
 }
 
 int Application::main(std::vector<std::wstring> args) {
-  HWND hwnd;
-  MSG msg;
   WNDCLASS winc {
     .style = CS_HREDRAW | CS_VREDRAW,
     .lpfnWndProc = wnd_proc_wrap,
@@ -73,7 +71,7 @@ int Application::main(std::vector<std::wstring> args) {
     return -1;
   }
 
-  hwnd = CreateWindow(
+  HWND hwnd = CreateWindow(
     TEXT("KITTY"), TEXT("Kitty on your lap") ,
     WS_OVERLAPPEDWINDOW | WS_VISIBLE,
     CW_USEDEFAULT, CW_USEDEFAULT,
@@ -85,7 +83,8 @@ int Application::main(std::vector<std::wstring> args) {
   if( hwnd == NULL ) {
     return -1;
   }
-
+  
+  MSG msg;
   while( GetMessage(&msg, NULL, 0, 0) ) {
     TranslateMessage(&msg);
     DispatchMessage(&msg);
