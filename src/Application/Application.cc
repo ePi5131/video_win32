@@ -56,17 +56,18 @@ LRESULT CALLBACK Application::wnd_proc(HWND hwnd, UINT msg, WPARAM wp, LPARAM lp
 int Application::main(std::vector<std::wstring> args) {
   HWND hwnd;
   MSG msg;
-  WNDCLASS winc;
-
-  winc.style		= CS_HREDRAW | CS_VREDRAW;
-  winc.lpfnWndProc	= wnd_proc_wrap;
-  winc.cbClsExtra	= winc.cbWndExtra	= 0;
-  winc.hInstance		= hInstance;
-  winc.hIcon		= LoadIcon(NULL, IDI_APPLICATION);
-  winc.hCursor		= LoadCursor(NULL, IDC_ARROW);
-  winc.hbrBackground	= (HBRUSH)GetStockObject(WHITE_BRUSH);
-  winc.lpszMenuName	= NULL;
-  winc.lpszClassName	= TEXT("KITTY");
+  WNDCLASS winc {
+    .style = CS_HREDRAW | CS_VREDRAW,
+    .lpfnWndProc = wnd_proc_wrap,
+    .cbClsExtra = 0,
+    .cbWndExtra = 0,
+    .hInstance = hInstance,
+    .hIcon = LoadIcon(NULL, IDI_APPLICATION),
+    .hCursor = LoadCursor(NULL, IDC_ARROW),
+    .hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH),
+    .lpszMenuName = NULL,
+    .lpszClassName = TEXT("KITTY")
+  };
 
   if( !RegisterClass(&winc) ) {
     return -1;
