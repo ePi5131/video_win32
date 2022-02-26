@@ -8,18 +8,18 @@
 #include <vector>
 #include <memory>
 
-#define  TIMELINE_BMP_WIDTH   2000
-#define  TIMELINE_BMP_HEIGHT  1000
+using i8 = int8_t;
+using i16 = int16_t;
+using i32 = int32_t;
+using i64 = int64_t;
 
-typedef int8_t i8;
-typedef int16_t i16;
-typedef int32_t i32;
-typedef int64_t i64;
+using u8 = uint8_t;
+using u16 = uint16_t;
+using u32 = uint32_t;
+using u64 = uint64_t;
 
-typedef uint8_t u8;
-typedef uint16_t u16;
-typedef uint32_t u32;
-typedef uint64_t u64;
+inline constexpr u32 TIMELINE_BMP_WIDTH  = 2000;
+inline constexpr u32 TIMELINE_BMP_HEIGHT = 1000;
 
 struct Point {
   i64 x;
