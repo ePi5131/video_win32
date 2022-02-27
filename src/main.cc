@@ -1,4 +1,5 @@
-#include "videoe.h"
+#include <Windows.h>
+#include "Application.h"
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
   std::vector<std::wstring> args;

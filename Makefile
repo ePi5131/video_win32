@@ -5,7 +5,9 @@ TOPDIR		?= $(CURDIR)
 OBJDIR		:= objects
 INCLDIR		:= include
 SRCDIR		:= src
-SUBDIR		:= Application
+SUBDIR		:= \
+	Application \
+	Preview
 
 CFLAGS		= -g -O2 -I $(INCLUDES)
 CXXFLAGS	= $(CFLAGS) -std=c++20 -fno-rtti

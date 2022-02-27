@@ -1,10 +1,14 @@
-#include "videoe.h"
+#include <Windows.h>
+#include "Timeline.h"
 
-Timeline::Timeline(HWND hwnd) {
+void Timeline::intialize(HWND hwnd) {
   HDC hdc = GetDC(hwnd);
 
   bitmap = CreateCompatibleBitmap(hdc, TIMELINE_BMP_WIDTH, TIMELINE_BMP_HEIGHT);
   buffer = CreateCompatibleDC(hdc);
+
+  SelectObject(buffer, bitmap);
+  SelectObject(buffer, GetStockObject(NULL_PEN));
 
   ReleaseDC(hwnd, hdc);
 }

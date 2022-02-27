@@ -1,4 +1,5 @@
-#include "videoe.h"
+#include <Windows.h>
+#include "Application.h"
 
 namespace {
   Application* instance;
@@ -27,12 +28,11 @@ LRESULT CALLBACK Application::wnd_proc(HWND hwnd, UINT msg, WPARAM wp, LPARAM lp
 
   switch( msg ) {
     case WM_CREATE: {
-			timeline.reset(new Timeline(hwnd));
+			timeline.intialize(hwnd);
       break;
     }
 
     case WM_DESTROY: {
-			timeline.reset();
       PostQuitMessage(0);
       break;
     }
@@ -40,7 +40,7 @@ LRESULT CALLBACK Application::wnd_proc(HWND hwnd, UINT msg, WPARAM wp, LPARAM lp
 		case WM_PAINT: {
 			hdc = BeginPaint(hwnd, &ps);
 			
-			timeline->draw(hdc, tl_drawpos);
+			timeline.draw(hdc, tl_drawpos);
 
 			EndPaint(hwnd, &ps);
 			break;
